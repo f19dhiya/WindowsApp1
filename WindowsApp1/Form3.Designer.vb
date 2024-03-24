@@ -23,7 +23,6 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -42,7 +41,6 @@ Partial Class Form3
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
@@ -63,19 +61,10 @@ Partial Class Form3
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Student Details"
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(48, 71)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(91, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Student ID          :"
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(48, 114)
+        Me.Label3.Location = New System.Drawing.Point(57, 64)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(90, 13)
         Me.Label3.TabIndex = 2
@@ -84,7 +73,7 @@ Partial Class Form3
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(48, 158)
+        Me.Label4.Location = New System.Drawing.Point(57, 108)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(91, 13)
         Me.Label4.TabIndex = 3
@@ -93,7 +82,7 @@ Partial Class Form3
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(48, 207)
+        Me.Label5.Location = New System.Drawing.Point(57, 157)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(90, 13)
         Me.Label5.TabIndex = 4
@@ -102,7 +91,7 @@ Partial Class Form3
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(48, 248)
+        Me.Label6.Location = New System.Drawing.Point(57, 198)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(89, 13)
         Me.Label6.TabIndex = 5
@@ -111,7 +100,7 @@ Partial Class Form3
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(48, 292)
+        Me.Label7.Location = New System.Drawing.Point(57, 242)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(89, 13)
         Me.Label7.TabIndex = 6
@@ -165,7 +154,7 @@ Partial Class Form3
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(342, 292)
+        Me.Label13.Location = New System.Drawing.Point(215, 298)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(85, 13)
         Me.Label13.TabIndex = 12
@@ -205,7 +194,7 @@ Partial Class Form3
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Male", "Female"})
-        Me.ComboBox1.Location = New System.Drawing.Point(160, 204)
+        Me.ComboBox1.Location = New System.Drawing.Point(169, 154)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(100, 21)
         Me.ComboBox1.TabIndex = 29
@@ -231,35 +220,28 @@ Partial Class Form3
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(161, 246)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(170, 196)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(100, 20)
         Me.DateTimePicker1.TabIndex = 33
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(159, 71)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 34
-        '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(161, 114)
+        Me.TextBox2.Location = New System.Drawing.Point(170, 64)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(100, 20)
         Me.TextBox2.TabIndex = 35
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(161, 158)
+        Me.TextBox3.Location = New System.Drawing.Point(170, 108)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(100, 20)
         Me.TextBox3.TabIndex = 36
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(161, 289)
+        Me.TextBox4.Location = New System.Drawing.Point(170, 239)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(100, 20)
         Me.TextBox4.TabIndex = 37
@@ -294,7 +276,7 @@ Partial Class Form3
         '
         'TextBox9
         '
-        Me.TextBox9.Location = New System.Drawing.Point(450, 294)
+        Me.TextBox9.Location = New System.Drawing.Point(323, 300)
         Me.TextBox9.Name = "TextBox9"
         Me.TextBox9.Size = New System.Drawing.Size(100, 20)
         Me.TextBox9.TabIndex = 42
@@ -312,7 +294,6 @@ Partial Class Form3
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.ComboBox2)
@@ -331,7 +312,6 @@ Partial Class Form3
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Form3"
         Me.Text = "STUDENTS details"
@@ -341,7 +321,6 @@ Partial Class Form3
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
@@ -360,7 +339,6 @@ Partial Class Form3
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Button4 As Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox

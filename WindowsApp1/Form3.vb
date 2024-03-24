@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.Remoting.Messaging
+Imports MySql.Data.MySqlClient
 
 Public Class Form3
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -17,37 +18,12 @@ Public Class Form3
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim studentId As String = TextBox1.Text
-        If String.IsNullOrEmpty(studentId) Then
-            MessageBox.Show("Please enter a student ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox1.Focus()
-            Return
-        ElseIf studentId.Length <> 5 Then
-            MessageBox.Show("Invalid student ID length. Please enter exactly 5 characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox1.Focus()
-            Return
-        ElseIf Not System.Text.RegularExpressions.Regex.IsMatch(studentId, "^[S]\d{4}$") Then
-            MessageBox.Show("Invalid student ID format. Please enter a student ID starting with 'S' followed by 4 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox1.Focus()
-            Return
-        End If
-
-
-
         If String.IsNullOrEmpty(TextBox2.Text) Then
             MessageBox.Show("please enter a first name.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox2.Focus()
             Return
         ElseIf IsNumeric(TextBox2.Text) Then
             MessageBox.Show("please enter valid first name.,", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox2.Focus()
-            Return
-        ElseIf system.Text.RegularExpressions.Regex.IsMatch(TextBox2.Text, "[\d\w]") Then
-            MessageBox.Show("first name cannot digits or special characters.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox2.Focus()
-            Return
-        ElseIf Not System.Text.RegularExpressions.Regex.IsMatch(TextBox2.Text, "^[a-zA-Z]+&") Then
-            MessageBox.Show("first name cannotcontain alphanumeric characters.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox2.Focus()
             Return
         End If
@@ -59,14 +35,6 @@ Public Class Form3
             Return
         ElseIf IsNumeric(TextBox3.Text) Then
             MessageBox.Show("Please e valid last name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox3.Focus()
-            Return
-        ElseIf System.Text.RegularExpressions.Regex.IsMatch(TextBox3.Text, "[\d\W]") Then
-            MessageBox.Show("Last name cannot contain digits or special characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox3.Focus()
-            Return
-        ElseIf Not System.Text.RegularExpressions.Regex.IsMatch(TextBox3.Text, "^[a-zA-Z]+$") Then
-            MessageBox.Show("Last name cannot contain alphanumeric characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox3.Focus()
             Return
         End If
@@ -112,23 +80,8 @@ Public Class Form3
         End If
 
 
-        If Not String.IsNullOrWhiteSpace(TextBox4.Text) AndAlso Not System.Text.RegularExpressions.Regex.IsMatch(TextBox4.Text, "[^a-zA-Z0-9._%+-]+@gmail.com") Then
-            MessageBox.Show("Please enter a valid email address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox4.Focus()
-            Return
-        End If
-
-
         If String.IsNullOrEmpty(TextBox5.Text) Then
             MessageBox.Show("Please enter father's name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox5.Focus()
-            Return
-        ElseIf System.Text.RegularExpressions.Regex.IsMatch(TextBox4.Text, "[\d\W]") Then
-            MessageBox.Show("father's name cannot contain digits or special characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox5.Focus()
-            Return
-        ElseIf Not System.Text.RegularExpressions.Regex.IsMatch(TextBox5.Text, "^[a-zA-Z]+$") Then
-            MessageBox.Show("father's name cannot contain alphanumeric characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox5.Focus()
             Return
         End If
@@ -138,27 +91,11 @@ Public Class Form3
             MessageBox.Show("Please enter the occupation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox6.Focus()
             Return
-        ElseIf System.Text.RegularExpressions.Regex.IsMatch(TextBox6.Text, "[\d\W]") Then
-            MessageBox.Show("occupation cannot contain digits or special characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox6.Focus()
-            Return
-        ElseIf Not System.Text.RegularExpressions.Regex.IsMatch(TextBox6.Text, "^[a-zA-Z]+$") Then
-            MessageBox.Show("occuption cannot contain alphanumeric characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox6.Focus()
-            Return
         End If
 
 
         If String.IsNullOrWhiteSpace(TextBox7.Text) Then
             MessageBox.Show("Please enter the city.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox7.Focus()
-            Return
-        ElseIf System.Text.RegularExpressions.Regex.IsMatch(TextBox7.Text, "[\d\W]") Then
-            MessageBox.Show("City cannot cain digits or special characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox7.Focus()
-            Return
-        ElseIf Not System.Text.RegularExpressions.Regex.IsMatch(TextBox7.Text, "^[a-zA-Z]+$") Then
-            MessageBox.Show("City cannot contain alphanumeric characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox7.Focus()
             Return
         End If
@@ -173,11 +110,6 @@ Public Class Form3
         If String.IsNullOrWhiteSpace(TextBox8.Text) Then
             MessageBox.Show("Please enter the pincode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TextBox8.Focus()
-            Return
-        ElseIf System.Text.RegularExpressions.Regex.IsMatch(TextBox8.Text, "^[1-9][0-9]{5}$") Then
-            MessageBox.Show("invalid pincode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TextBox8.Focus()
-            Return
         End If
 
 
@@ -191,7 +123,38 @@ Public Class Form3
             Return
 
         End If
+        SaveToDatabase()
+
     End Sub
+    Private Sub SaveToDatabase()
+        Dim connectionString As String = "server=localhost;user=root;password=admin;database=tms;"
 
+        Try
+            Using connection As New MySqlConnection(connectionString)
+                Dim query As String = "INSERT INTO student (stufname, stulname, stugender, studob, stuemail, stuphoneno, stufathername, stuoccupation, stucity, stustate, stuposcode) VALUES (@stufname, @stulname, @stugender, @studob, @stuemail, @stuphoneno, @stufathername, @stuoccupation, @stucity, @stustate, @stuposcode)"
 
+                Using command As New MySqlCommand(query, connection)
+                    ' Add parameters with values from form controls
+                    command.Parameters.AddWithValue("@stufname", TextBox2.Text)
+                    command.Parameters.AddWithValue("@stulname", TextBox3.Text)
+                    command.Parameters.AddWithValue("@stugender", ComboBox1.Text)
+                    command.Parameters.AddWithValue("@studob", DateTimePicker1.Value.Date)
+                    command.Parameters.AddWithValue("@stuemail", TextBox4.Text)
+                    command.Parameters.AddWithValue("@stuphoneno", TextBox9.Text)
+                    command.Parameters.AddWithValue("@stufathername", TextBox5.Text)
+                    command.Parameters.AddWithValue("@stuoccupation", TextBox6.Text)
+                    command.Parameters.AddWithValue("@stucity", TextBox7.Text)
+                    command.Parameters.AddWithValue("@stustate", ComboBox2.Text)
+                    command.Parameters.AddWithValue("@stuposcode", TextBox8.Text)
+
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Student data saved successfully.")
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+   
 End Class
