@@ -31,6 +31,7 @@ Partial Class home
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -124,11 +125,21 @@ Partial Class home
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
         '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(242, 294)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(140, 23)
+        Me.Button7.TabIndex = 8
+        Me.Button7.Text = "REPORT"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
         'home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(665, 450)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
@@ -155,4 +166,5 @@ Partial Class home
     Friend WithEvents Button6 As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Button7 As Button
 End Class
