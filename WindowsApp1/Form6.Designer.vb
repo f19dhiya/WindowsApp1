@@ -156,6 +156,7 @@ Partial Class Form6
         'ComboBox3
         '
         Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Items.AddRange(New Object() {"Cash", "UPI", "Credit Card", "Debit Card", "Net Banking"})
         Me.ComboBox3.Location = New System.Drawing.Point(261, 273)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(100, 21)
