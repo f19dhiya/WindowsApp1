@@ -45,7 +45,7 @@ Public Class home
 
     Private Sub GenerateReceipt()
         Dim connectionString As String = "server=localhost;user=root;password=admin;database=tms;"
-        Dim query As String = "SELECT * FROM payment"
+        Dim query As String = "SELECT p.pid, p.stuid, p.eid, p.pdate, p.amount, p.pmethord, CONCAT(s.stufname, ' ', s.stulname) AS stuname FROM payment p JOIN student s ON p.stuid = s.stuid"
 
         Try
             Using connection As New MySqlConnection(connectionString)
@@ -85,6 +85,7 @@ Public Class home
         End Try
     End Sub
 
+
     Private Function GenerateReceiptContent(table As DataTable) As String
         Dim sb As New StringBuilder()
 
@@ -96,6 +97,7 @@ Public Class home
         For Each row As DataRow In table.Rows
             sb.AppendLine($"Payment ID: {row("pid")}")
             sb.AppendLine($"Student ID: {row("stuid")}")
+            sb.AppendLine($"Student Name: {row("stuname")}")
             sb.AppendLine($"Enrollment ID: {row("eid")}")
             sb.AppendLine($"Payment Date: {Convert.ToDateTime(row("pdate")):MM/dd/yyyy}")
             sb.AppendLine($"Amount: {Convert.ToDecimal(row("amount")):C}")
